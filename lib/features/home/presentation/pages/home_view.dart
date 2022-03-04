@@ -5,6 +5,8 @@ import 'package:todo/app/app.dart';
 import 'package:todo/app/styles/loader.dart';
 import 'package:todo/features/home/home.dart';
 
+import '../widgets/widgets.dart';
+
 class HomeView extends StatefulWidget {
   const HomeView({Key? key}) : super(key: key);
 
@@ -65,114 +67,18 @@ class _HomeViewState extends State<HomeView> {
                                 currency: item.name,
                                 amount: item.currentPrice,
                                 time: 'time',
-                                profit: item.ath,
+                                profit: item.athChangePercentage,
                                 image: item.image,
                               );
                             },
                           ),
-                          // SingleChildScrollView(
-                          //   child: Column(
-                          //     children: [
-                          //       CurrencyList(
-                          //           status: '',
-                          //           currency: '',
-                          //           amount: 'amount',
-                          //           time: 'time',
-                          //           profit: 'profit')
-                          //     ],
-                          //   ),
-                          // ),
-                        )
+                        ),
                       ],
                     ),
                   ),
                 );
         },
       ),
-    );
-  }
-}
-
-class CurrencyList extends StatelessWidget {
-  const CurrencyList({
-    required this.status,
-    required this.currency,
-    required this.amount,
-    required this.time,
-    required this.profit,
-    required this.image,
-    Key? key,
-  }) : super(key: key);
-
-  final String status;
-  final dynamic currency;
-  final dynamic amount;
-  final String time;
-  final dynamic profit;
-  final String image;
-
-  @override
-  Widget build(BuildContext context) {
-    return Column(
-      children: [
-        Row(
-          children: [
-            Container(
-              width: 80,
-              height: 80,
-              decoration: BoxDecoration(
-                shape: BoxShape.rectangle,
-                borderRadius: BorderRadius.circular(14),
-                color: AppColors.white,
-              ),
-              child: Image.network(
-                image,
-              ),
-            ),
-            const Gap(20),
-            Expanded(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  const BodyText(
-                    'Received',
-                    color: AppColors.ash,
-                    fontSize: 14,
-                    fontWeight: FontWeight.w400,
-                  ),
-                  const Gap(5),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      BodyText(
-                        '$amount $currency',
-                        color: AppColors.black,
-                        fontSize: 17,
-                        fontWeight: FontWeight.w600,
-                      ),
-                      BodyText(
-                        profit.toString(),
-                        color: AppColors.green,
-                        fontSize: 17,
-                        fontWeight: FontWeight.w600,
-                        maxLines: 3,
-                      ),
-                    ],
-                  ),
-                  const Gap(10),
-                  const BodyText(
-                    '09:34, AUG 27, 2022',
-                    color: AppColors.ash,
-                    fontSize: 15,
-                    fontWeight: FontWeight.w400,
-                  ),
-                ],
-              ),
-            )
-          ],
-        ),
-        const Gap(30)
-      ],
     );
   }
 }
